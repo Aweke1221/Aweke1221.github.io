@@ -1,7 +1,7 @@
 // EmailJS Contact Form
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS with your Public Key
-    emailjs.init("YOUR_PUBLIC_KEY_HERE");
+    emailjs.init("Y2NWqf5Ab6pDj4UUR");
     
     const contactForm = document.querySelector('.message-form');
     
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnText.textContent = 'Sending...';
             
             // Send email using EmailJS
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            emailjs.sendForm('service_g24io4v', 'template_vigxevo', this)
                 .then(function() {
                     // Success
                     submitBtn.classList.remove('loading');
