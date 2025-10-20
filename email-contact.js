@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             // Send email using EmailJS
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            emailjs.sendForm('service_g24io4v', 'template_ah5qzsx', this)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
