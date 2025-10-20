@@ -1,108 +1,106 @@
-// EmailJS Contact Form with Debug Logs
+// Initialize EmailJS
+(function() {
+    emailjs.init("Y2NWqf5Ab6pDj4UUR"); // Your public key
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize EmailJS with your Public Key
-    emailjs.init("Y2NWqf5Ab6pDj4UUR");
+    const contactForm = document.getElementById('contactForm');
+    const notification = document.getElementById('successNotification');
     
-    console.log("✅ EmailJS initialized with Public Key");
+    // Email copy functionality
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const email = this.getAttribute('data-text');
+            navigator.clipboard.writeText(email).then(() => {
+                showNotification('Email copied to clipboard!', 'success');
+            });
+        });
+    });
     
-    const contactForm = document.querySelector('.message-form');
-    
+    // Form submission
     if (contactForm) {
-        console.log("✅ Contact form found");
-        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            console.log("📝 Form submission started");
-            
             const submitBtn = this.querySelector('.submit-btn');
             const btnText = submitBtn.querySelector('.btn-text');
+            const loader = submitBtn.querySelector('.btn-loader');
             
-            // Show loading
-            submitBtn.classList.add('loading');
+            // Show loading state
             btnText.textContent = 'Sending...';
-            
-            console.log("🔄 Sending email via EmailJS...");
-            console.log("Service ID:", 'service_g24io4v');
-            console.log("Template ID:", 'template_a42mqef');
-            
-            // Get form data for debugging
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            console.log("📨 Form data:", data);
+            loader.style.display = 'flex';
+            submitBtn.disabled = true;
             
             // Send email using EmailJS
-            emailjs.sendForm('service_g24io4v', 'template_a42mqef', this)
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
                 .then(function(response) {
-                    console.log("🎉 SUCCESS! Email sent:", response);
-                    console.log("Status:", response.status);
-                    console.log("Text:", response.text);
-                    
-                    // Success
-                    submitBtn.classList.remove('loading');
-                    btnText.textContent = 'Message Sent!';
-                    submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                    console.log('SUCCESS!', response.status, response.text);
+                    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                     contactForm.reset();
-                    
-                    showNotification('Message sent successfully! I will reply soon.', 'success');
-                    
-                    setTimeout(() => {
-                        btnText.textContent = 'Send Message';
-                        submitBtn.style.background = '';
-                    }, 3000);
-                }, function(error) {
-                    console.log("❌ FAILED! Email error:", error);
-                    console.log("Error details:", {
-                        status: error.status,
-                        text: error.text,
-                        message: error.message
-                    });
-                    
-                    // Error
-                    submitBtn.classList.remove('loading');
-                    btnText.textContent = 'Failed - Try Again';
-                    submitBtn.style.background = 'linear-gradient(135deg, #dc3545, #e83e8c)';
-                    
-                    showNotification('Failed to send. Please email me directly at awekebabey21@gmail.com', 'error');
-                    
-                    setTimeout(() => {
-                        btnText.textContent = 'Send Message';
-                        submitBtn.style.background = '';
-                    }, 3000);
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
+                    showNotification('Failed to send message. Please try emailing me directly.', 'error');
+                })
+                .finally(function() {
+                    // Reset button state
+                    btnText.textContent = 'Send Message';
+                    loader.style.display = 'none';
+                    submitBtn.disabled = false;
                 });
         });
-    } else {
-        console.log("❌ Contact form NOT found - check CSS selector");
     }
     
-    function showNotification(message, type) {
-        console.log("🔔 Showing notification:", type, message);
+    // Show notification function
+    function showNotification(message, type = 'success') {
+        const notification = document.getElementById('successNotification');
+        const notificationText = notification.querySelector('.notification-text');
+        const notificationIcon = notification.querySelector('i');
         
-        // Remove existing notifications
-        const existing = document.querySelectorAll('.notification');
-        existing.forEach(notif => notif.remove());
+        notificationText.textContent = message;
         
-        const notification = document.createElement('div');
-        notification.className = `notification show ${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-                <div class="notification-text">${message}</div>
-            </div>
-        `;
-        document.body.appendChild(notification);
+        // Change icon and color based on type
+        if (type === 'error') {
+            notification.style.background = '#f44336';
+            notificationIcon.className = 'fas fa-exclamation-circle';
+        } else {
+            notification.style.background = '#4CAF50';
+            notificationIcon.className = 'fas fa-check-circle';
+        }
         
+        notification.classList.add('show');
+        
+        // Hide after 5 seconds
         setTimeout(() => {
             notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 500);
         }, 5000);
     }
     
-    // Test EmailJS initialization
-    console.log("🧪 Testing EmailJS initialization...");
-    if (typeof emailjs !== 'undefined') {
-        console.log("✅ EmailJS library loaded correctly");
-    } else {
-        console.log("❌ EmailJS library NOT loaded - check script tag");
-    }
+    // Floating orbs interaction
+    const orbs = document.querySelectorAll('.contact-orb');
+    orbs.forEach(orb => {
+        orb.addEventListener('click', function() {
+            const type = this.getAttribute('data-type');
+            let message = '';
+            
+            switch(type) {
+                case 'email':
+                    navigator.clipboard.writeText('awekebabey21@gmail.com');
+                    message = 'Email copied to clipboard!';
+                    break;
+                case 'whatsapp':
+                    message = 'Opening WhatsApp...';
+                    break;
+                case 'telegram':
+                    message = 'Opening Telegram...';
+                    break;
+                case 'instagram':
+                    message = 'Opening Instagram...';
+                    break;
+            }
+            
+            showNotification(message, 'success');
+        });
+    });
 });
