@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Portfolio Showcase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+   
+    <link rel="stylesheet" href="assets/css/projects.css">
+</head>
+<body>
+    <!-- Interactive Background -->
+    <div class="projects-bg">
+        <div class="floating-elements">
+            <div class="project-element elem-1"></div>
+            <div class="project-element elem-2"></div>
+            <div class="project-element elem-3"></div>
+            <div class="project-element elem-4"></div>
+        </div>
+    </div>
+
+   <!-- Navigation Menu -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Aweke Babey</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Projects Hero Section -->
+    <section class="projects-hero py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="projects-title" data-aos="fade-up">
+                        My <span class="text-highlight">Creative</span> Projects
+                    </h1>
+                    <p class="projects-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        Explore my journey through graphics design and web development. 
+                        Each project tells a unique story of problem-solving and creativity.
+                    </p>
+                    <div class="projects-stats" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="8">0</div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="2">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Filter System -->
+    <section class="project-filter py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="web">Web Development</button>
+                        <button class="filter-btn" data-filter="design">Graphics Design</button>
+                        <button class="filter-btn" data-filter="game">Games</button>
+                        <button class="filter-btn" data-filter="system">Systems</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-grid py-5">
+        <div class="container">
+            <div class="row g-4" id="projectsContainer">
+                
+                <!-- Bus Ticketing System -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="system web">
+                    <div class="project-card" data-aos="flip-up">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/400/300?random=1" alt="Bus Ticketing System">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-demo">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="project-link view-code">
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-category-badge">Web System</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Bus Ticketing System</h3>
+                            <p class="project-description">
+                                Comprehensive bus reservation system with real-time seat booking, payment integration, and admin dashboard.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <div class="project-features">
+                                <span class="feature">Real-time Booking</span>
+                                <span class="feature">Payment Gateway</span>
+                                <span class="feature">Admin Dashboard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Hub -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="web design">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="100">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/400/300?random=2" alt="Learning Hub">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-demo">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="project-link view-code">
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-category-badge">Educational Platform</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Learning Hub</h3>
+                            <p class="project-description">
+                                Interactive e-learning platform with course management, progress tracking, and engaging UI design.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">UI/UX</span>
+                            </div>
+                            <div class="project-features">
+                                <span class="feature">Course Management</span>
+                                <span class="feature">Progress Tracking</span>
+                                <span class="feature">Responsive Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator App -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="web">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/400/300?random=3" alt="Calculator App">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-demo">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="project-link view-code">
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-category-badge">Web Application</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Smart Calculator</h3>
+                            <p class="project-description">
+                                Feature-rich calculator with scientific functions, history tracking, and beautiful minimalist design.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">Responsive</span>
+                            </div>
+                            <div class="project-features">
+                                <span class="feature">Scientific Functions</span>
+                                <span class="feature">History Tracking</span>
+                                <span class="feature">Dark/Light Mode</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Memory Card Game -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="game design">
+                    <div class="project-card" data-aos="flip-up">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/400/300?random=4" alt="Memory Card Game">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-demo">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="project-link view-code">
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-category-badge">Interactive Game</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Memory Card Game</h3>
+                            <p class="project-description">
+                                Fun and challenging memory matching game with multiple difficulty levels and beautiful card designs.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS Animations</span>
+                                <span class="tech-tag">Game Design</span>
+                                <span class="tech-tag">UI/UX</span>
+                            </div>
+                            <div class="project-features">
+                                <span class="feature">Multiple Levels</span>
+                                <span class="feature">Score System</span>
+                                <span class="feature">Smooth Animations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grading System -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="system web">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="100">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/400/300?random=5" alt="Grading System">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-demo">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="project-link view-code">
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-category-badge">Management System</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Student Grading System</h3>
+                            <p class="project-description">
+                                Comprehensive academic management system for tracking student performance and generating reports.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-features">
+                                <span class="feature">Grade Calculation</span>
+                                <span class="feature">Report Generation</span>
+                                <span class="feature">Admin Panel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Posters Design -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="design">
+                    <div class="project-card" data-aos="flip-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/400/300?random=6" alt="Posters Design">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link view-demo">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="project-link download-design">
+                                        <i class="fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-category-badge">Graphics Design</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Creative Posters Collection</h3>
+                            <p class="project-description">
+                                Professionally designed posters for events and promotions with attention to typography and visual hierarchy.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Adobe Photoshop</span>
+                                <span class="tech-tag">Illustrator</span>
+                                <span class="tech-tag">Typography</span>
+                                <span class="tech-tag">Color Theory</span>
+                            </div>
+                            <div class="project-features">
+                                <span class="feature">Print Ready</span>
+                                <span class="feature">Multiple Formats</span>
+                                <span class="feature">Brand Consistency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Showcase -->
+    <section class="skills-showcase py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Technologies & Tools</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-right">
+                    <div class="skills-category">
+                        <h4><i class="fas fa-code me-2"></i>Development</h4>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">HTML5/CSS3</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">PHP/MySQL</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="80"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="fade-left">
+                    <div class="skills-category">
+                        <h4><i class="fas fa-palette me-2"></i>Design</h4>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Adobe Photoshop</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">UI/UX Design</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Typography</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Brand Identity</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" data-level="82"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="projects-cta py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center" data-aos="zoom-in">
+                    <h2 class="cta-title">Like What You See?</h2>
+                    <p class="cta-text">Let's collaborate to bring your next project to life with the same level of creativity and attention to detail.</p>
+                    <a href="contact.html" class="btn btn-primary btn-lg cta-btn">
+                        <i class="fas fa-paper-plane me-2"></i>Start a Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-brand">Aweke B</h3>
+                    <p class="footer-text">Creating digital experiences that inspire and engage users across all platforms.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="footer-title">Contact Info</h5>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> awekebabey21@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +251930161499</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Addis Abeba,Ethiopia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2023 Aweke Babey. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Designed with <i class="fas fa-heart"></i> by Aweke</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModalTitle">Project Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="projectModalContent">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/projects.js"></script>
+</body>
+</html>
