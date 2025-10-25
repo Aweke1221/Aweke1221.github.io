@@ -1,7 +1,7 @@
 .notification {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 200px;
+    right: 100px;
     background: #4CAF50;
     color: white;
     padding: 15px 20px;
