@@ -8,27 +8,30 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillBars();
 });
 
-// 3D Profile Card Flip
-// 3D Profile Card Flip - HOVER VERSION
-function initProfileCard() {
-    // No JavaScript needed for hover functionality
-    // The CSS :hover pseudo-class handles the flip
-    
-    // Only keep the skill bars animation if needed
-    const skillBars = document.querySelectorAll('.skill-progress');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.getAttribute('data-width');
-                entry.target.style.width = width + '%';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    skillBars.forEach(bar => observer.observe(bar));
-}
+// Select main elements
+const profileCard = document.getElementById('profileCard');
+const flipBackButton = document.querySelector('.flip-back');
+const skillBars = document.querySelectorAll('.skill-progress');
+
+// Flip card when clicked
+profileCard.addEventListener('click', () => {
+  profileCard.classList.toggle('flipped');
+
+  // Animate skill bars when showing the back
+  if (profileCard.classList.contains('flipped')) {
+    skillBars.forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width');
+    });
+  }
+});
+
+// Flip back when back button clicked
+flipBackButton.addEventListener('click', (e) => {
+  e.stopPropagation(); // prevent triggering the main flip again
+  profileCard.classList.remove('flipped');
+  skillBars.forEach(bar => bar.style.width = '0');
+});
+
 
 // Animated Stats Counter
 function initAnimatedStats() {

@@ -7,6 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/about.css">
+    <style>
+    
+
+    
+  </style>
 </head>
 <body>
     <!-- Navigation Menu -->
@@ -62,68 +67,71 @@
             <!-- Profile Section with Flip Card -->
             <div class="row align-items-center profile-section">
                 <div class="col-lg-4">
-                    <div class="profile-card">
-                        <div class="profile-card-inner">
-                            <div class="profile-card-front">
-                                <div class="profile-img">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Profile Picture">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Aweke Babey</h3>
-                                    <p>Full Stack Developer</p>
-                                    <div class="profile-stats">
-                                        <div class="stat">
-                                            <h4>50+</h4>
-                                            <p>Projects</p>
-                                        </div>
-                                        <div class="stat">
-                                            <h4>5+</h4>
-                                            <p>Years</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flip-indicator">
-                                    <i class="fas fa-sync-alt"></i>
-                                    <span>Click to flip</span>
-                                </div>
-                            </div>
-                            <div class="profile-card-back">
-                                <div class="back-content">
-                                    <h3>Skills & Expertise</h3>
-                                    <div class="skills-list">
-                                        <div class="skill">
-                                            <span>Frontend Development</span>
-                                            <div class="skill-bar">
-                                                <div class="skill-progress" data-width="90"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill">
-                                            <span>Backend Development</span>
-                                            <div class="skill-bar">
-                                                <div class="skill-progress" data-width="85"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill">
-                                            <span>UI/UX Design</span>
-                                            <div class="skill-bar">
-                                                <div class="skill-progress" data-width="80"></div>
-                                            </div>
-                                        </div>
-                                        <div class="skill">
-                                            <span>Database Management</span>
-                                            <div class="skill-bar">
-                                                <div class="skill-progress" data-width="75"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="flip-back">
-                                        <i class="fas fa-arrow-left"></i>
-                                        Back to Profile
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                     <div class="profile-card" id="profileCard">
+    <div class="profile-card-inner">
+      <!-- FRONT -->
+      <div class="profile-card-front">
+        <div class="profile-img">
+          <img src="assets/images/ab.jpg" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+          <h3>Aweke Babey</h3>
+          <p>Full Stack Developer</p>
+          <div class="profile-stats">
+            <div class="stat">
+              <h4>50+</h4>
+              <p>Projects</p>
+            </div>
+            <div class="stat">
+              <h4>5+</h4>
+              <p>Years</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="flip-indicator">
+          <i class="fas fa-sync-alt"></i> Click to flip
+        </div>
+      </div>
+
+      <!-- BACK -->
+      <div class="profile-card-back">
+        <div class="back-content">
+          <h3>Skills & Expertise</h3>
+          <div class="skills-list">
+            <div class="skill">
+              <span>Frontend Development</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+            </div>
+            <div class="skill">
+              <span>Backend Development</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+            </div>
+            <div class="skill">
+              <span>UI/UX Design</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+            </div>
+            <div class="skill">
+              <span>Database Management</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+            </div>
+            <div class="skill">
+              <span>API Integration</span>
+              <div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div>
+            </div>
+          </div>
+          <button class="flip-back">
+            <i class="fas fa-arrow-left"></i> Back to Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="about-content">
@@ -280,7 +288,26 @@
             </div>
         </div>
     </footer>
+<script>
+    const profileCard = document.getElementById('profileCard');
+    const flipBackButton = document.querySelector('.flip-back');
+    const skillBars = document.querySelectorAll('.skill-progress');
 
+    profileCard.addEventListener('click', () => {
+      profileCard.classList.toggle('flipped');
+      if (profileCard.classList.contains('flipped')) {
+        skillBars.forEach(bar => {
+          bar.style.width = bar.getAttribute('data-width');
+        });
+      }
+    });
+
+    flipBackButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      profileCard.classList.remove('flipped');
+      skillBars.forEach(bar => bar.style.width = '0');
+    });
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/about.js"></script>
 </body>

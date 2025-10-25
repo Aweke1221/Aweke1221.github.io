@@ -189,47 +189,46 @@ body {
 }
 
 .profile-card {
-    perspective: 1000px;
-    height: 500px;
-    margin-bottom: 2rem;
-}
+      width: 340px;
+      height: 460px;
+      perspective: 1000px;
+    }
 
-.profile-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s ease-in-out;
-    transform-style: preserve-3d;
-}
+    .profile-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.9s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
 
-/* HOVER EFFECT - Changed from click to hover */
-.profile-card:hover .profile-card-inner {
-    transform: rotateY(180deg);
-}
+    .profile-card.flipped .profile-card-inner {
+      transform: rotateY(180deg);
+    }
 
-.profile-card-front,
-.profile-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
+    .profile-card-front,
+    .profile-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
 
-.profile-card-back {
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    .profile-card-front {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      text-align: center;
+    }
 
-.profile-img {
+   .profile-img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -244,102 +243,113 @@ body {
     height: 100%;
     object-fit: cover;
 }
+    .profile-info h3 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      color: #fff;
+    }
 
-.profile-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
+    .profile-info p {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
 
-.profile-info p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-bottom: 1.5rem;
-}
+    .profile-stats {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 15px;
+    }
 
-.profile-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 1.5rem 0;
-}
+    .stat h4 {
+      font-size: 1.2rem;
+      color: #3b82f6;
+    }
 
-.stat h4 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: #ffd700;
-}
+    .stat p {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
 
-.stat p {
-    font-size: 0.9rem;
-    margin: 0;
-    opacity: 0.8;
-}
+    .flip-indicator {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
 
-.flip-indicator {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    opacity: 0.7;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
+    .flip-indicator i {
+      margin-right: 5px;
+    }
 
-.profile-card:hover .flip-indicator {
-    opacity: 0;
-}
+    /* Back */
+    .profile-card-back {
+      background: linear-gradient(135deg, #1e293b, #3b82f6);
+      transform: rotateY(180deg);
+      padding: 25px;
+    }
 
-.back-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
+    .profile-card-back h3 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #fff;
+    }
 
-.skills-list {
-    margin-bottom: 2rem;
-}
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.skill {
-    margin-bottom: 1rem;
-}
+    .skill {
+      font-size: 0.9rem;
+    }
 
-.skill span {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
+    .skill-bar {
+      background: #334155;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 8px;
+      margin-top: 4px;
+    }
 
-.skill-bar {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    overflow: hidden;
-}
+    .skill-progress {
+      height: 8px;
+      background: #3b82f6;
+      width: 0;
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
 
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #ffd700, #ff6b6b);
-    border-radius: 4px;
-    width: 0;
-    transition: width 1.5s ease-in-out;
-}
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
 
-/* Remove the flip-back button since we're using hover */
-.flip-back {
-    display: none;
-}
+    .social-links a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
 
-.flip-back:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-}
+    .social-links a:hover {
+      color: #38bdf8;
+    }
 
+    .flip-back {
+      margin-top: 20px;
+      background: #0f172a;
+      border: none;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .flip-back:hover {
+      background: #3b82f6;
+    }
 .about-content {
     padding-left: 2rem;
 }
