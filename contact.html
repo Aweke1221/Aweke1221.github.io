@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link " href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
@@ -47,7 +47,7 @@
                         <a class="nav-link" href="projects.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="contact.php">Contact</a> <!-- Changed to .php -->
+                        <a class="nav-link active" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -118,25 +118,19 @@
                         </div>
                     </div>
 
-                    <!-- Quick Message Form - UPDATED FOR PHP -->
+                    <!-- Quick Message Form -->
                     <div class="quick-form" data-aos="fade-up" data-aos-delay="700">
                         <h4 class="form-title">Send Quick Message</h4>
-                        <!-- Success/Error Messages will appear here -->
-                        <div id="formMessage" style="display: none;" class="alert alert-dismissible fade show">
-                            <span id="messageText"></span>
-                            <button type="button" class="btn-close" onclick="hideMessage()"></button>
-                        </div>
-                        
-                        <form class="message-form" method="POST" action="send_email.php" id="contactForm">
+                        <form class="message-form" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" id="contactForm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-input" name="from_name" placeholder="Your Name" required>
+                                        <input type="text" class="form-input" name="name" placeholder="Your Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-input" name="from_email" placeholder="Your Email" required>
+                                        <input type="email" class="form-input" name="email" placeholder="Your Email" required>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +184,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.php">Contact</a></li> <!-- Changed to .php -->
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-6 mb-4">
@@ -232,11 +226,8 @@
         </div>
     </div>
 
-    <!-- Scripts (EmailJS Removed) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="assets/js/contact.js"></script>
-    
     <script>
         // Initialize AOS
         AOS.init({
@@ -244,38 +235,52 @@
             once: true
         });
 
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form submission handler for Formspree
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
             const submitBtn = document.getElementById('submitBtn');
             const btnText = submitBtn.querySelector('.btn-text');
             const btnLoader = submitBtn.querySelector('.btn-loader');
             
-            // Show loading state
+            // Show loading
             btnText.style.display = 'none';
             btnLoader.style.display = 'flex';
             submitBtn.disabled = true;
             
-            // Form will submit normally to PHP file
-            // PHP will handle the response
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success notification
+                    const notification = document.getElementById('successNotification');
+                    notification.style.display = 'block';
+                    form.reset();
+                    
+                    // Hide notification after 5 seconds
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 5000);
+                } else {
+                    alert('Failed to send message. Please try again.');
+                }
+            } catch (error) {
+                alert('Network error. Please try again.');
+            } finally {
+                // Hide loading
+                btnText.style.display = 'block';
+                btnLoader.style.display = 'none';
+                submitBtn.disabled = false;
+            }
         });
-
-        // Function to show message
-        function showMessage(type, text) {
-            const messageDiv = document.getElementById('formMessage');
-            const messageText = document.getElementById('messageText');
-            
-            messageDiv.className = 'alert alert-dismissible fade show';
-            messageDiv.classList.add(type === 'success' ? 'alert-success' : 'alert-danger');
-            messageText.textContent = text;
-            messageDiv.style.display = 'block';
-            
-            // Auto-hide after 5 seconds
-            setTimeout(hideMessage, 5000);
-        }
-
-        function hideMessage() {
-            document.getElementById('formMessage').style.display = 'none';
-        }
 
         // Copy email function
         document.querySelectorAll('.copy-btn').forEach(button => {
@@ -292,17 +297,6 @@
                     }, 2000);
                 });
             });
-        });
-
-        // Check for URL parameters (for success/error messages from PHP)
-        window.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const status = urlParams.get('status');
-            const message = urlParams.get('message');
-            
-            if (status && message) {
-                showMessage(status, decodeURIComponent(message));
-            }
         });
     </script>
 </body>
