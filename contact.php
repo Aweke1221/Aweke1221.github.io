@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="assets/css/contact.css">
- <link rel="stylesheet" href="email-contact.css"> 
 </head>
 <body>
     <!-- Interactive Background -->
@@ -48,7 +47,7 @@
                         <a class="nav-link" href="projects.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="contact.html">Contact</a>
+                        <a class="nav-link active" href="contact.php">Contact</a> <!-- Changed to .php -->
                     </li>
                 </ul>
             </div>
@@ -112,54 +111,59 @@
                                 <i class="fab fa-instagram"></i>
                             </div>
                             <h4>Instagram</h4>
-                            <p>@aeme_re</p> <!-- Update this -->
-                            <a href="https://instagram.com/your_actual_username" target="_blank" class="btn-contact">
+                            <p>@aeme_re</p>
+                            <a href="https://instagram.com/aeme_re" target="_blank" class="btn-contact">
                                 <i class="fab fa-instagram"></i> Follow & DM
                             </a>
                         </div>
                     </div>
 
-<!-- Quick Message Form -->
-<div class="quick-form" data-aos="fade-up" data-aos-delay="700">
-    <h4 class="form-title">Send Quick Message</h4>
-    <form class="message-form" id="contactForm">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <input type="text" class="form-input" name="from_name" placeholder="Your Name" required>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <input type="email" class="form-input" name="from_email" placeholder="Your Email" required>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <textarea class="form-input" name="message" placeholder="Tell me about your project..." rows="4" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">
-            <span class="btn-text">Send Message</span>
-            <div class="btn-loader">
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-            </div>
-        </button>
-    </form>
-</div>
+                    <!-- Quick Message Form - UPDATED FOR PHP -->
+                    <div class="quick-form" data-aos="fade-up" data-aos-delay="700">
+                        <h4 class="form-title">Send Quick Message</h4>
+                        <!-- Success/Error Messages will appear here -->
+                        <div id="formMessage" style="display: none;" class="alert alert-dismissible fade show">
+                            <span id="messageText"></span>
+                            <button type="button" class="btn-close" onclick="hideMessage()"></button>
+                        </div>
+                        
+                        <form class="message-form" method="POST" action="send_email.php" id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-input" name="from_name" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-input" name="from_email" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-input" name="message" placeholder="Tell me about your project..." rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span class="btn-text">Send Message</span>
+                                <div class="btn-loader">
+                                    <div class="loader-dot"></div>
+                                    <div class="loader-dot"></div>
+                                    <div class="loader-dot"></div>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+
                     <!-- Additional Social Links -->
                     <div class="social-section" data-aos="fade-up" data-aos-delay="800">
                         <h5>Follow me on other platforms</h5>
                         <div class="social-links">
-                            <a href="https://github.com/@Aweke1221" class="social-link" data-platform="github">
+                            <a href="https://github.com/Aweke1221" class="social-link" data-platform="github" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://linkedin.com/in/yourusername" class="social-link" data-platform="linkedin">
+                            <a href="https://linkedin.com/in/aweke-babey" class="social-link" data-platform="linkedin" target="_blank">
                                 <i class="fab fa-linkedin"></i>
                             </a>
-                          
-                          
                         </div>
                     </div>
                 </div>
@@ -175,10 +179,9 @@
                     <h3 class="footer-brand">Aweke B</h3>
                     <p class="footer-text">Creating digital experiences that inspire and engage users across all platforms.</p>
                     <div class="footer-social">
-                        <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="https://instagram.com/@aeme_re" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com/in/yourusername" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/aeme_re" class="footer-social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/in/aweke-babey" class="footer-social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Aweke1221" class="footer-social-link" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-6 mb-4">
@@ -187,7 +190,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="projects.html">Projects</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.php">Contact</a></li> <!-- Changed to .php -->
                     </ul>
                 </div>
                 <div class="col-lg-3 col-6 mb-4">
@@ -229,47 +232,78 @@
         </div>
     </div>
 
+    <!-- Scripts (EmailJS Removed) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="assets/js/contact.js"></script>
+    
     <script>
-        // Initialize EmailJS with your Public Key
-        emailjs.init("Y2NWqf5Ab6pDj4UUR");
-        
         // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
         });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoader = submitBtn.querySelector('.btn-loader');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'flex';
+            submitBtn.disabled = true;
+            
+            // Form will submit normally to PHP file
+            // PHP will handle the response
+        });
+
+        // Function to show message
+        function showMessage(type, text) {
+            const messageDiv = document.getElementById('formMessage');
+            const messageText = document.getElementById('messageText');
+            
+            messageDiv.className = 'alert alert-dismissible fade show';
+            messageDiv.classList.add(type === 'success' ? 'alert-success' : 'alert-danger');
+            messageText.textContent = text;
+            messageDiv.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(hideMessage, 5000);
+        }
+
+        function hideMessage() {
+            document.getElementById('formMessage').style.display = 'none';
+        }
+
+        // Copy email function
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const email = this.getAttribute('data-text');
+                navigator.clipboard.writeText(email).then(() => {
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    this.style.background = '#28a745';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Check for URL parameters (for success/error messages from PHP)
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+            const message = urlParams.get('message');
+            
+            if (status && message) {
+                showMessage(status, decodeURIComponent(message));
+            }
+        });
     </script>
-
-
-<script>
-// Test function to check EmailJS setup
-function testEmailSetup() {
-    console.log('🧪 ===== EMAILJS SETUP TEST =====');
-    console.log('1. Checking Public Key: Y2NWqf5Ab6pDj4UUR');
-    console.log('2. Service ID: service_g24io4v');
-    console.log('3. Template ID: template_ah5qzsx');
-    console.log('4. Form ID: contactForm');
-    
-    // Check if form exists
-    const form = document.getElementById('contactForm');
-    if (form) {
-        console.log('✅ Form found in DOM');
-        console.log('Form elements:', form.elements);
-    } else {
-        console.log('❌ Form NOT found in DOM');
-    }
-    
-    // Check EmailJS object
-    console.log('EmailJS object:', emailjs);
-    console.log('===== END TEST =====');
-}
-</script>
 </body>
 </html>
-
-
-
