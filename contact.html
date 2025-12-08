@@ -235,7 +235,7 @@
             once: true
         });
 
-        // Form submission handler for Formspree
+        // Form submission handler - CLEAN VERSION
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -263,17 +263,18 @@
                     // Show success notification
                     const notification = document.getElementById('successNotification');
                     notification.style.display = 'block';
+                    
+                    // CLEAR THE FORM FIELDS
                     form.reset();
                     
                     // Hide notification after 5 seconds
                     setTimeout(() => {
                         notification.style.display = 'none';
                     }, 5000);
-                } else {
-                    alert('Failed to send message. Please try again.');
                 }
+                // No else block = no alert messages on error
             } catch (error) {
-                alert('Network error. Please try again.');
+                // No catch block = no network error alerts
             } finally {
                 // Hide loading
                 btnText.style.display = 'block';
@@ -301,4 +302,3 @@
     </script>
 </body>
 </html>
-
