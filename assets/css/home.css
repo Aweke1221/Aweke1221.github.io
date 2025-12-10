@@ -218,10 +218,14 @@ section {
   padding: 100px 0;
 }
 
+/* Equal Height Cards */
 .project-preview-card {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;               /* Equal height */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease;
   margin-bottom: 40px;
@@ -232,14 +236,18 @@ section {
   box-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
 }
 
+/* Image Fix – DO NOT CROP */
 .project-preview-card img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  max-height: 220px;          /* Prevents overflow */
+  object-fit: contain;        /* No cropping */
+  background: #000;           /* Makes empty space clean */
 }
 
+/* Content */
 .project-content {
   padding: 25px;
+  flex-grow: 1;               /* Fills remaining height */
 }
 
 .project-content h5 {

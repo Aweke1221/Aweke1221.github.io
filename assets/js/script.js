@@ -56,9 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
-    // Animate skill bars on scroll
     window.addEventListener('scroll', animateSkillBars);
-    // Initial check
     animateSkillBars();
 
     // Enhanced hover effects for cards
@@ -80,18 +78,14 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Add loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
             submitBtn.disabled = true;
-            
-            // Simulate API call
+
             setTimeout(() => {
-                // Show success message
                 showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                 
-                // Reset form
                 this.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
@@ -117,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.body.appendChild(notification);
         
-        // Auto remove after 5 seconds
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.parentNode.removeChild(notification);
@@ -125,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Parallax effect for background elements
+    // Parallax effect
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.profile-shape, .animated-shapes .shape');
@@ -137,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add intersection observer for smooth animations
+    // Intersection observer animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -151,17 +144,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
     document.querySelectorAll('.skill-item, .project-card, .stat-item').forEach(el => {
         observer.observe(el);
     });
 
-    // Enhanced image loading
+    // FIXED IMAGE LOADING (bug-free)
     const images = document.querySelectorAll('img');
     images.forEach(img => {
-        img.addEventListener('load', function() {
-            this.classList.add('loaded');
-        });
+        if (img.complete) {
+            // If already loaded from cache
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+        }
     });
 });
 
